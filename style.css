@@ -16,7 +16,7 @@ body, html {
     height: 100%;
     background-color: #000;
     z-index: 9999;
-    animation: overlayFadeOut 0.8s ease-out forwards;
+    animation: overlayFadeOut 0.8s ease-out 0.217s forwards;
     pointer-events: none;
 }
 
@@ -32,7 +32,7 @@ body, html {
     background-position: center;
     background-repeat: no-repeat;
     
-    animation: bgShrink 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: bgShrink 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.217s forwards; /* Added delay */
 }
 
 .content-container {
@@ -52,7 +52,7 @@ body, html {
     gap: 16px;
     filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
     
-    animation: logoGrow 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: logoGrow 0.817s cubic-bezier(0.22, 1, 0.36, 1) 0.217s forwards;
 }
 
 .logo-icon svg {
@@ -78,7 +78,7 @@ body, html {
     position: absolute;
     bottom: 20%;
     opacity: 0;
-    animation: spinnerSlideUp 0.4s ease-out 0.2s forwards; 
+    animation: spinnerSlideUp 0.4s ease-out 0.783s forwards; 
 }
 
 .loader {
@@ -90,8 +90,10 @@ body, html {
     -webkit-mask: radial-gradient(closest-side, transparent 75%, black 77%);
     mask: radial-gradient(closest-side, transparent 75%, black 77%);
     animation: spin 1s linear infinite;
-    filter: drop-shadow(0 0 2px rgba(255,255,255,0.2)); /* Changed from 4px/0.4 */
+    filter: drop-shadow(0 0 2px rgba(255,255,255,0.2));
 }
+
+/* --- Keyframes --- */
 
 @keyframes overlayFadeOut {
     0% { opacity: 1; }
