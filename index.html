@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>arOS Boot Screen</title>
+    <title>arOS 3</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -50,6 +50,41 @@
 
         <div class="loader-container" id="loaderContainer">
             <div class="loader"></div>
+        </div>
+    </div>
+<div class="setup-loader-container" id="setupLoaderContainer">
+        <div class="loader"></div>
+        <div class="setup-text">Please wait...</div>
+    </div>
+
+<div class="setup-window" id="setupWindow">
+        <div class="window-header">
+            <div class="title">
+                <div class="title-logo-circle">
+                    <svg viewBox="0 0 100 100">
+                        <path d="M 43.6,0.0 L 0.0,50.9 L 3.6,54.7 L 74.5,54.7 L 76.4,60.4 L 54.5,81.1 L 50.9,69.8 L 41.8,69.8 L 41.8,96.2 L 50.9,98.1 L 90.9,60.4 L 98.2,49.1 L 94.5,45.3 L 21.8,45.3 L 20.0,41.5 L 38.2,22.6 L 41.8,24.5 L 41.8,32.1 L 52.7,30.2 L 50.9,0.0 Z" fill="#ffffff" />
+                    </svg>
+                </div>
+                AR OS Setup
+            </div>
+            <div class="close-btn">×</div>
+        </div>
+        <div class="window-inner-content">
+            <div class="window-banner">
+                <div class="banner-pill">
+                    <svg viewBox="0 0 100 100">
+                        <path d="M 43.6,0.0 L 0.0,50.9 L 3.6,54.7 L 74.5,54.7 L 76.4,60.4 L 54.5,81.1 L 50.9,69.8 L 41.8,69.8 L 41.8,96.2 L 50.9,98.1 L 90.9,60.4 L 98.2,49.1 L 94.5,45.3 L 21.8,45.3 L 20.0,41.5 L 38.2,22.6 L 41.8,24.5 L 41.8,32.1 L 52.7,30.2 L 50.9,0.0 Z" fill="#ffffff" />
+                    </svg>
+                    <span>arOS 3</span>
+                </div>
+            </div>
+            <div class="window-content">
+                <label>Select language to Install:</label>
+                <select class="custom-select">
+                    <option>English (United States)</option>
+                </select>
+                <button class="btn-next">Next</button>
+            </div>
         </div>
     </div>
 
