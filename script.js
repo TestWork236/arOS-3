@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoGroup = document.getElementById('logoGroup');
     const loaderContainer = document.getElementById('loaderContainer');
     const setupBackground = document.getElementById('setupBackground');
+    const setupLoaderContainer = document.getElementById('setupLoaderContainer');
+    const setupWindow = document.getElementById('setupWindow');
 
     const frameToMs = (frames) => (frames / 60) * 1000;
 
@@ -28,5 +30,18 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         setupBackground.classList.add('zoom-out');
     }, frameToMs(4 * 60));
+
+    setTimeout(() => {
+        setupLoaderContainer.classList.add('fade-in-up');
+    }, frameToMs(4 * 60 + 32));
     
+    setTimeout(() => {
+        setupLoaderContainer.classList.remove('fade-in-up');
+        setupLoaderContainer.classList.add('fade-out-down');
+    }, frameToMs(6 * 60));
+
+    setTimeout(() => {
+        setupWindow.classList.add('show');
+    }, frameToMs(6 * 60 + 20));
+
 });
