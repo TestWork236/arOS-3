@@ -277,7 +277,7 @@ body, html {
 .title-logo-circle {
     width: 18px;
     height: 18px;
-    background: #a97af5;
+    background: linear-gradient(180deg, #c295f8 0%, #854ae2 100%);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -313,7 +313,7 @@ body, html {
     height: 100px;
     border-radius: 6px;
     background-image: url('Assets/BG.png');
-    background-size: cover;
+    background-size: 135%;
     background-position: center;
     position: relative;
     display: flex;
@@ -323,9 +323,9 @@ body, html {
 }
 
 .banner-pill {
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgba(215, 109, 255, 0.25);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
     border: none;
     border-radius: 6px;
     padding: 14px 36px;
@@ -336,12 +336,12 @@ body, html {
 }
 
 .banner-pill svg {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
 }
 
 .banner-pill span {
-    font-size: 40px;
+    font-size: 36px;
     font-weight: 500;
     letter-spacing: -0.2px;
     background: linear-gradient(180deg, #ffffff 20%, #e2c2f5 100%);
