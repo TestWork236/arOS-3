@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arOS Boot Screen</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: #000; /* Start black */
+        }
+
+        /* 1. Black Screen Overlay */
+        .black-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            z-index: 9999;
+            /* Immediately and very quickly fades out */
+            animation: overlayFadeOut 0.8s ease-out forwards;
+            pointer-events: none;
+        }
+
+        /* 2. Background Layer */
+        .bg-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            /* Encoded Background Image */
+            background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAIBAQEBAQIBAQECAgICAgQDAgICAgUEBAMEBgUGBgYFBgYGBwkIBgcJBwYGCAsICQoKCgoKBggLDAsKDAkKCgr/2wBDAQICAgICAgUDAwUKBwYHCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgr/wAARCAA8AGoDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD8wNG0hnYHHNdhoXhsvj5PrVDwxbLI65HpXp3g/QFn2EIOcdq/b7M+45WVvD/g0ybf3X6V2eh+AS23MP6V0/hPwasm39z+lej+Gfh8ZguLf9KLPqPRHnOm/DxioJg+nFX38DpAu5oscdMV7ND8P1toN7wY47isHWdBUSmGOP8ASurC4Z13oXGLa0PJ7rwrvO2OL9KbF8PJpxvNvn/gNewaH8OnvXDtDx6EV0kPwzSOMfuP0ruq0I0lY66VF2uz54uvhyyr/qP/AB2sLVfARAI8k/XFfS+o/DrAOYP/AB2ue1f4dDBxb/pXm1ElqbKkfMOs+BnAOIv0rj9f8ItFu/dnivp7xH4AESMxg/SvL/GvhpbYMPL9e1cjbkyJUz5713RTESAtYDWB3H9339K9L8U6SiswK965N9OYMR5feq5WkYSg0zY8MqY5Fx2Ir174byo8kaOBnivKPDKq0g3eter/AA8tG86Mp6ivWhSi0HJzH0N8NPDiakI9qZ6dq978CfDFTbJK0PAHpXk/wFiVZIRKAemc19WeD4rP+zF2AZ2ivBzGtUpVOWJyzhPnseY+N9Bh0u1aMRgcV5xDpIvNS5GRu9K9n+KWlyTqxRT07CvMbW1NpqIEp2jd6V9tkVGEsIpdTt5eRK513hHwjbmBT5Q6V0o8GxlMiLtVDwRqNsdsUkqqRjk13tsLeSHCuCR6GufMKUoTuehTtJWRwGo+DY8ECIflXO6v4OjCsTEOPWvVNRiiIJZRXIeLLyC2gfkdO1eJVhKeiOyFB8t2eI/EHSLezicBAPwrwH4jqm+QKB36V7z8TNTNwZEjPc9K8M8bWTzFy3et6ODjTjeRxYiUKZ4p4tgJd/lx17Vx7277zwevpXo/i3TQCxYetcY9ou84fv6VnNU+Y8uVS7M/w7djcrKea9X+HGuxwTRrIePevEtAvQsirnpXoPhTUmVlKvyK74WaNINn2N8HfF1jCImMoB4719F+B/iFbeSkf2gc+9fAfgfxhe2Gzy5Tj2NeteEvi/d2wTdOePevPxGBjWlc6KKg5e8fZN/cWOu2hIdScV514v0BbaVpkUAda47wd8ckYKk1119639Z+Ium6la7vOUkj1rsy+rXwVTk6GtWEeg/w7qzWVwELY5rv9O8Vxx24JkxxXiw8Swi4LLOuM8D1q8vjfagVZu3Y17OJnGsrl4a0XdnqGr+MYwhHm/rXAeLvFD3IfEnY96wr3xkZFJM3b1rmtc8WxhSTKM/WvMkoQZticclHliUvFtyr7mdxzXl3jC5iRXwRXReKfFqsG/eivMPGHiYOX/efrXLUqSm7HiTm5vU5HxneJlyD3NcI9yu8/N39a1fFmuhy2XrjX1dCxO7vXJIyOd0m+KkYbpXa+GdbEbLlvTvXmemzyK4Abr1rp9DuJVYYfoa6I1HY2jLU9w8Ja7G+0M/613uk3gkiBSTk+hrw7wrfXKlSJK9G8O6neCNf3nauSviZxegVJtHfwa1e6ed6zEYFWV+KWoW6iJ7g4+tcnLqV08WGYdKxNUu5+TvrbDYqc9xQrz2PUbT4q5OZJufU1oR/FKArzcj868Ikv7mMZSTGD61XbXdTXIW4PFd/tZNFuvOx7xd/FC328XA/Oue1r4mRMpxcfrXj1z4g1Xaf9JNY+pa/qfP+kGsZPUyu3qz0PxF8Q43LYn/WuA8S+NvM3Yl/Wua1TV79nIMxrn9Uvbhush5rElPqTa/4ied2G89fWufbUTuOZB1qLUJpOTu6ms4uxOc1zykkDaR//9k=');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            
+            /* Shrinking down Animation */
+            animation: bgShrink 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        /* Main Content Container */
+        .content-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
+            
+            /* 3. Logo Growing Animation */
+            /* Includes translateY to keep centering */
+            animation: logoGrow 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .logo-icon svg {
+            width: 52px;
+            height: 52px;
+            fill: url(#logoGradient);
+            shape-rendering: geometricPrecision;
+        }
+
+        .logo-text {
+            font-size: 54px;
+            font-weight: 500;
+            letter-spacing: -0.4px;
+            line-height: 1;
+            background: linear-gradient(180deg, #ffffff 20%, #e2c2f5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Loading Spinner */
+        .loader-container {
+            position: absolute;
+            bottom: 20%;
+            /* 4. Spinner Entry Animation */
+            opacity: 0; /* Start hidden */
+            animation: spinnerSlideUp 0.8s ease-out 1s forwards; /* 1s delay */
+        }
+
+        .loader {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            position: relative;
+            background: conic-gradient(from 0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, #ffffff 100%);
+            -webkit-mask: radial-gradient(closest-side, transparent 80%, black 82%);
+            mask: radial-gradient(closest-side, transparent 80%, black 82%);
+            animation: spin 1s linear infinite;
+            filter: drop-shadow(0 0 4px rgba(255,255,255,0.4));
+        }
+
+        /* --- Keyframes --- */
+
+        @keyframes overlayFadeOut {
+            0% { opacity: 1; }
+            80% { opacity: 0; }
+            100% { opacity: 0; visibility: hidden; }
+        }
+
+        @keyframes bgShrink {
+            0% { transform: scale(1.15); } /* Start 15% larger */
+            100% { transform: scale(1); }
+        }
+
+        @keyframes logoGrow {
+            0% { 
+                opacity: 0;
+                transform: translateY(-20px) scale(0.85); 
+            }
+            100% { 
+                opacity: 1;
+                transform: translateY(-20px) scale(1); 
+            }
+        }
+
+        @keyframes spinnerSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Black Overlay -->
+    <div class="black-overlay"></div>
+
+    <!-- Background Layer -->
+    <div class="bg-layer"></div>
+
+    <!-- Content -->
+    <div class="content-container">
+        <div class="logo-group">
+            <div class="logo-icon">
+                <svg viewBox="0 0 100 100">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="20%" style="stop-color:#ffffff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#e2c2f5;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M 43.6,0.0 
+                             L 0.0,50.9 
+                             L 3.6,54.7 
+                             L 74.5,54.7 
+                             L 76.4,60.4 
+                             L 54.5,81.1 
+                             L 50.9,69.8 
+                             L 41.8,69.8 
+                             L 41.8,96.2 
+                             L 50.9,98.1 
+                             L 90.9,60.4 
+                             L 98.2,49.1 
+                             L 94.5,45.3 
+                             L 21.8,45.3 
+                             L 20.0,41.5 
+                             L 38.2,22.6 
+                             L 41.8,24.5 
+                             L 41.8,32.1 
+                             L 52.7,30.2 
+                             L 50.9,0.0 Z" />
+                </svg>
+            </div>
+            <div class="logo-text">arOS</div>
+        </div>
+
+        <div class="loader-container">
+            <div class="loader"></div>
+        </div>
+    </div>
+
+</body>
+</html>
