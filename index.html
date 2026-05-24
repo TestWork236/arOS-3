@@ -8,12 +8,13 @@
 </head>
 <body>
 
-    <div class="black-overlay"></div>
+    <div class="black-overlay" id="blackOverlay"></div>
 
-    <div class="bg-layer"></div>
+    <div class="bg-layer" id="bootBackground"></div>
+    <div class="setup-bg-layer" id="setupBackground"></div>
 
-    <div class="content-container">
-        <div class="logo-group">
+    <div class="content-container" id="contentContainer">
+        <div class="logo-group" id="logoGroup">
             <div class="logo-icon">
                 <svg viewBox="0 0 100 100">
                     <defs>
@@ -47,10 +48,11 @@
             <div class="logo-text">arOS</div>
         </div>
 
-        <div class="loader-container">
+        <div class="loader-container" id="loaderContainer">
             <div class="loader"></div>
         </div>
     </div>
 
+    <script src="script.js"></script>
 </body>
 </html>
