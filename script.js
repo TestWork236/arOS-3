@@ -1,0 +1,32 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const blackOverlay = document.getElementById('blackOverlay');
+    const bootBackground = document.getElementById('bootBackground');
+    const logoGroup = document.getElementById('logoGroup');
+    const loaderContainer = document.getElementById('loaderContainer');
+    const setupBackground = document.getElementById('setupBackground');
+
+    const frameToMs = (frames) => (frames / 60) * 1000;
+
+    setTimeout(() => {
+        logoGroup.classList.add('content-rise-fade');
+        loaderContainer.classList.add('content-rise-fade');
+
+        blackOverlay.style.animation = `overlayFadeInThenOut 0.9s ease-in-out forwards`;
+        blackOverlay.style.animationDelay = `0s`;
+        blackOverlay.style.visibility = 'visible';
+        blackOverlay.style.opacity = '0';
+
+        setTimeout(() => {
+            bootBackground.style.opacity = '0';
+            bootBackground.style.visibility = 'hidden';
+            bootBackground.style.zIndex = '-1';
+        }, 100);
+        
+
+    }, frameToMs(3 * 60 + 26));
+
+    setTimeout(() => {
+        setupBackground.classList.add('zoom-out');
+    }, frameToMs(4 * 60));
+    
+});
