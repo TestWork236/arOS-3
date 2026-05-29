@@ -103,9 +103,11 @@ body, html {
     height: 28px;
     border-radius: 50%;
     position: relative;
-    background: conic-gradient(from 0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.8) 100%);
-    -webkit-mask: radial-gradient(closest-side, transparent 75%, black 77%);
-    mask: radial-gradient(closest-side, transparent 75%, black 77%);
+    background: linear-gradient(180deg, #ffffff 20%, #e2c2f5 100%);
+    -webkit-mask-image: radial-gradient(closest-side, transparent 75%, black 77%), conic-gradient(from 0deg, transparent 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.8) 100%);
+    -webkit-mask-composite: source-in;
+    mask-image: radial-gradient(closest-side, transparent 75%, black 77%), conic-gradient(from 0deg, transparent 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.8) 100%);
+    mask-composite: intersect;
     animation: spin 1s linear infinite;
     filter: drop-shadow(0 0 2px rgba(255,255,255,0.2));
 }
@@ -193,7 +195,7 @@ body, html {
 }
 
 .setup-text {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 500;
     letter-spacing: 0.2px;
     background: linear-gradient(180deg, #ffffff 20%, #e2c2f5 100%);
@@ -215,7 +217,7 @@ body, html {
 }
 
 .fade-out-down {
-    animation: setupFadeOutDown 0.35s ease-in forwards;
+    animation: setupFadeOutDown 0.1s ease-in forwards;
 }
 
 @keyframes setupFadeOutDown {
@@ -225,7 +227,7 @@ body, html {
     }
     100% {
         opacity: 0;
-        transform: translate(-50%, 20px);
+        transform: translate(-50%, 0);
     }
 }
 
@@ -234,8 +236,8 @@ body, html {
     top: 50%;
     left: 50%;
     width: 400px;
-    transform: translate(-50%, -50%) scale(0.95);
-    background: rgba(235, 220, 255, 0.65);
+    transform: translate(-50%, -50%);
+    background: rgba(235, 220, 255, 0.25);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.25);
@@ -250,12 +252,22 @@ body, html {
 
 .setup-window.show {
     visibility: visible;
-    animation: windowPopIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: windowFadeUp 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-@keyframes windowPopIn {
-    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
-    100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+@keyframes windowFadeUp {
+    0% { opacity: 0; transform: translate(-50%, -30%); }
+    100% { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.setup-window.hide {
+    animation: windowFadeDown 0.383s ease-in forwards;
+}
+
+
+@keyframes windowFadeDown {
+    0% { opacity: 1; transform: translate(-50%, -50%); visibility: visible; }
+    100% { opacity: 0; transform: translate(-50%, -30%); visibility: hidden; }
 }
 
 .window-header {
@@ -298,11 +310,13 @@ body, html {
 }
 
 .window-inner-content {
-    background: rgba(250, 246, 255, 0.9);
+    background: rgba(255, 255, 255, 0.35);
     border-radius: 8px 8px 8px 8px;
     margin: 0;
     border: none;
     border-top: 1px solid rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     display: flex;
     flex-direction: column;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -367,7 +381,7 @@ body, html {
 .custom-select {
     width: 100%;
     padding: 10px 14px;
-    background-color: rgba(255, 255, 255, 0.65);
+    background-color: rgba(255, 255, 255, 0.45);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 12px center;
@@ -400,6 +414,27 @@ body, html {
     box-shadow: 0 6px 16px rgba(0,0,0,0.12);
 }
 
+.btn-next:active {
+    background: rgba(255, 255, 255, 0.4);
+    color: #333;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
 body * {
     cursor: url("data:image/svg+xml,%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 28 28' enable-background='new 0 0 28 28' xml:space='preserve'%3E%3Cpolygon fill='%23FFFFFF' points='8.2,20.9 8.2,4.9 19.8,16.5 13,16.5 12.6,16.6 '/%3E%3Cpolygon fill='%23FFFFFF' points='17.3,21.6 13.7,23.1 9,12 12.7,10.5 '/%3E%3Crect x='12.5' y='13.6' transform='matrix(0.9221 -0.3871 0.3871 0.9221 -5.7605 6.5909)' width='2' height='8'/%3E%3Cpolygon points='9.2,7.3 9.2,18.5 12.2,15.6 12.6,15.5 17.4,15.5 '/%3E%3C/svg%3E") 8 5, auto !important;
+}
+
+.content-fade-up {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+#setupWindow2.show .content-fade-up {
+    animation: contentFadeUpAnim 0.25s ease-out 0.366667s forwards;
+}
+
+@keyframes contentFadeUpAnim {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
