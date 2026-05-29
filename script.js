@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
             bootBackground.style.visibility = 'hidden';
             bootBackground.style.zIndex = '-1';
         }, 100);
-        
 
     }, frameToMs(3 * 60 + 26));
 
@@ -38,10 +37,22 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         setupLoaderContainer.classList.remove('fade-in-up');
         setupLoaderContainer.classList.add('fade-out-down');
-    }, frameToMs(6 * 60));
+    }, frameToMs(6 * 60 + 40));
 
     setTimeout(() => {
         setupWindow.classList.add('show');
-    }, frameToMs(6 * 60 + 20));
+    }, frameToMs(7 * 60 + 2));
 
+    const btnNext = document.querySelector('.btn-next');
+    btnNext.addEventListener('click', () => {
+        setupWindow.classList.remove('show');
+        setupWindow.classList.add('hide');
+        
+        setTimeout(() => {
+            const setupWindow2 = document.getElementById('setupWindow2');
+            if (setupWindow2) {
+                setupWindow2.classList.add('show');
+            }
+        }, frameToMs(23)); 
+    });
 });
