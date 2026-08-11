@@ -155,6 +155,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const btnDecline = document.getElementById('btnDecline');
+    if (btnDecline) {
+        btnDecline.addEventListener('click', () => {
+            transitionSteps(step4, step3, false);
+            currentStep = 3;
+        });
+    }
+
     if (btnNextStep5) {
         btnNextStep5.addEventListener('click', () => {
             transitionSteps(step5, step6, true);
@@ -229,11 +237,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                     setupWindow2.classList.add('hide');
                                     
                                     setTimeout(() => {
-                                        const blackOverlay = document.getElementById('blackOverlay');
-                                        blackOverlay.style.transition = 'opacity 0.4s ease';
-                                        blackOverlay.style.animation = 'none';
-                                        blackOverlay.style.opacity = '1';
-                                        blackOverlay.style.visibility = 'visible';
+                                        const restartOverlay = document.getElementById('restartOverlay');
+                                        restartOverlay.classList.add('active');
                                         
                                         setTimeout(() => {
                                             document.getElementById('setupWindow').style.display = 'none';
@@ -243,6 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                             const bootBg = document.getElementById('bootBackground');
                                             const logoGrp = document.getElementById('logoGroup');
                                             const loader = document.getElementById('loaderContainer');
+                                            const blackOverlay = document.getElementById('blackOverlay');
                                             
                                             bootBg.style.opacity = '1';
                                             bootBg.style.visibility = 'visible';
@@ -261,24 +267,34 @@ document.addEventListener('DOMContentLoaded', () => {
                                             resetAnim(logoGrp);
                                             resetAnim(loader);
                                             
-                                            blackOverlay.style.animation = 'overlayFadeOut 0.8s ease-out 0.217s forwards';
+                                            blackOverlay.style.transition = 'none';
+                                            blackOverlay.style.animation = 'none';
+                                            blackOverlay.style.opacity = '1';
+                                            blackOverlay.style.visibility = 'visible';
+                                            
+                                            restartOverlay.style.display = 'none';
                                             
                                             setTimeout(() => {
-                                                const darknessOverlay = document.getElementById('darknessOverlay');
-                                                const oobeContainer = document.getElementById('oobeContainer');
-                                                const oobeText = document.getElementById('oobeText');
-                                                
-                                                darknessOverlay.classList.add('active');
+                                                blackOverlay.style.animation = 'overlayFadeOut 0.8s ease-out 0.217s forwards';
                                                 
                                                 setTimeout(() => {
-                                                    oobeContainer.style.display = 'flex';
-                                                    oobeText.classList.add('active');
-                                                }, 2000);
+                                                    const darknessOverlay = document.getElementById('darknessOverlay');
+                                                    const oobeContainer = document.getElementById('oobeContainer');
+                                                    const oobeText = document.getElementById('oobeText');
+                                                    
+                                                    darknessOverlay.classList.add('active');
+                                                    
+                                                    setTimeout(() => {
+                                                        oobeContainer.style.display = 'flex';
+                                                        oobeText.classList.add('active');
+                                                    }, 2000);
+                                                    
+                                                }, 3500);
                                                 
-                                            }, 3500);
+                                            }, 50);
                                             
-                                        }, 400);
-                                    }, 400);
+                                        }, 2000);
+                                    }, 300);
                                 };
                                 
                                 restartBtn.addEventListener('click', doRestart);
