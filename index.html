@@ -96,38 +96,277 @@
 
     <div class="setup-window" id="setupWindow2" style="width: 620px;">
         <div class="window-header">
-            <div class="title">
-                <div class="title-logo-circle">
-                    <svg viewBox="0 0 100 100">
-                        <path d="M 43.6,0.0 L 0.0,50.9 L 3.6,54.7 L 74.5,54.7 L 76.4,60.4 L 54.5,81.1 L 50.9,69.8 L 41.8,69.8 L 41.8,96.2 L 50.9,98.1 L 90.9,60.4 L 98.2,49.1 L 94.5,45.3 L 21.8,45.3 L 20.0,41.5 L 38.2,22.6 L 41.8,24.5 L 41.8,32.1 L 52.7,30.2 L 50.9,0.0 Z" fill="#ffffff" />
-                    </svg>
+            <div class="title" style="position: relative; display: flex; align-items: center;">
+                <div class="back-btn" id="backBtn" style="position: absolute; left: 0; opacity: 0; display: none; cursor: pointer;">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                 </div>
-                arOS Setup
+                <div id="titleWrapper" style="display: flex; align-items: center; gap: 8px;">
+                    <div class="title-logo-circle">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M 43.6,0.0 L 0.0,50.9 L 3.6,54.7 L 74.5,54.7 L 76.4,60.4 L 54.5,81.1 L 50.9,69.8 L 41.8,69.8 L 41.8,96.2 L 50.9,98.1 L 90.9,60.4 L 98.2,49.1 L 94.5,45.3 L 21.8,45.3 L 20.0,41.5 L 38.2,22.6 L 41.8,24.5 L 41.8,32.1 L 52.7,30.2 L 50.9,0.0 Z" fill="#ffffff" />
+                        </svg>
+                    </div>
+                    arOS Setup
+                </div>
             </div>
             <div class="close-btn">×</div>
         </div>
-        <div class="window-inner-content" style="padding: 30px 40px 40px 40px; align-items: center; text-align: center;">
-            <div class="content-fade-up">
+        <div class="window-inner-content" style="position: relative; overflow: hidden; min-height: 480px;">
+            <div id="step1Content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 30px 40px 40px 40px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; text-align: center;">
+                <div class="content-fade-up">
+                    <svg viewBox="0 0 100 100" style="width: 32px; height: 32px; fill: #222; margin-bottom: 16px;">
+                        <path d="M 43.6,0.0 L 0.0,50.9 L 3.6,54.7 L 74.5,54.7 L 76.4,60.4 L 54.5,81.1 L 50.9,69.8 L 41.8,69.8 L 41.8,96.2 L 50.9,98.1 L 90.9,60.4 L 98.2,49.1 L 94.5,45.3 L 21.8,45.3 L 20.0,41.5 L 38.2,22.6 L 41.8,24.5 L 41.8,32.1 L 52.7,30.2 L 50.9,0.0 Z" />
+                    </svg>
+                </div>
+                <h2 class="content-fade-up" style="margin: 0 0 20px 0; font-size: 20px; color: #111;">Welcome to arOS setup!</h2>
+                <div class="content-fade-up" style="font-size: 11px; color: #222; line-height: 1.6;">
+                    <p style="margin: 0 0 12px 0;">Welcome to the arOS setup, which will guide you through the rest of the installation.<br>Each step provides basic instructions for completing the setup process.<br>Click "Next" to continue.</p>
+                    <p style="margin: 0 0 12px 0;">Setup will take 10 to 30 minutes, depending on the speed of your PC.</p>
+                    <p style="margin: 0;">If you need additional information and instructions about the setup,<br>click "How to install".</p>
+                </div>
+                <div class="content-fade-up" style="display: flex; gap: 12px; justify-content: center; margin-top: auto;">
+                    <button class="btn-next" id="btnNextStep2" style="display: flex; align-items: center; gap: 8px; padding: 8px 16px;">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        Next
+                    </button>
+                    <button class="btn-next" style="display: flex; align-items: center; gap: 8px; padding: 8px 16px;">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        How to install?
+                    </button>
+                </div>
+            </div>
+
+            <div id="step2Content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 30px 40px 40px 40px; box-sizing: border-box; display: none; flex-direction: column; align-items: center; text-align: center; opacity: 0;">
                 <svg viewBox="0 0 100 100" style="width: 32px; height: 32px; fill: #222; margin-bottom: 16px;">
                     <path d="M 43.6,0.0 L 0.0,50.9 L 3.6,54.7 L 74.5,54.7 L 76.4,60.4 L 54.5,81.1 L 50.9,69.8 L 41.8,69.8 L 41.8,96.2 L 50.9,98.1 L 90.9,60.4 L 98.2,49.1 L 94.5,45.3 L 21.8,45.3 L 20.0,41.5 L 38.2,22.6 L 41.8,24.5 L 41.8,32.1 L 52.7,30.2 L 50.9,0.0 Z" />
                 </svg>
-            </div>
-            <h2 class="content-fade-up" style="margin: 0 0 20px 0; font-size: 20px; color: #111;">Welcome to arOS setup!</h2>
-            <div class="content-fade-up" style="font-size: 11px; color: #222; line-height: 1.6; margin-bottom: 110px;">
-                <p style="margin: 0 0 12px 0;">Welcome to arOS setup, which will guide you through the rest of the Setup.<br>Each arOS setup has basic instructions for completing a step of<br>the installation. Click "Next" to continue the installation.</p>
-                <p style="margin: 0 0 12px 0;">Setup will take from 10 to 30 minutes, depending on the speed of your PC.</p>
-                <p style="margin: 0;">If you want additional information and instructions about arOS setup,<br>click "How to install"</p>
-            </div>
-            <div class="content-fade-up" style="display: flex; gap: 12px; justify-content: center;">
-                <button class="btn-next" style="display: flex; align-items: center; gap: 8px; padding: 8px 16px;">
+                <h2 style="margin: 0 0 12px 0; font-size: 20px; color: #111;">Select the edition</h2>
+                <p style="font-size: 11px; color: #111; margin: 0 0 32px 0;">Please select the edition of arOS 3 you want to install.</p>
+                
+                <div class="editions-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 32px; width: 100%;">
+                    <div class="edition-card">
+                        <div class="edition-icon" style="background: linear-gradient(135deg, #4fc3f7, #0288d1);">
+                            <svg viewBox="0 0 100 100"><path d="M 43.6,0.0 L 0.0,50.9 L 3.6,54.7 L 74.5,54.7 L 76.4,60.4 L 54.5,81.1 L 50.9,69.8 L 41.8,69.8 L 41.8,96.2 L 50.9,98.1 L 90.9,60.4 L 98.2,49.1 L 94.5,45.3 L 21.8,45.3 L 20.0,41.5 L 38.2,22.6 L 41.8,24.5 L 41.8,32.1 L 52.7,30.2 L 50.9,0.0 Z" /></svg>
+                        </div>
+                        <div class="edition-title">Pro</div>
+                        <div class="edition-date">XX/XX/XXXX</div>
+                    </div>
+                    <div class="edition-card">
+                        <div class="edition-icon" style="background: linear-gradient(135deg, #26a69a, #00796b);">
+                            <svg viewBox="0 0 100 100"><path d="M 43.6,0.0 L 0.0,50.9 L 3.6,54.7 L 74.5,54.7 L 76.4,60.4 L 54.5,81.1 L 50.9,69.8 L 41.8,69.8 L 41.8,96.2 L 50.9,98.1 L 90.9,60.4 L 98.2,49.1 L 94.5,45.3 L 21.8,45.3 L 20.0,41.5 L 38.2,22.6 L 41.8,24.5 L 41.8,32.1 L 52.7,30.2 L 50.9,0.0 Z" /></svg>
+                        </div>
+                        <div class="edition-title">Home</div>
+                        <div class="edition-date">XX/XX/XXXX</div>
+                    </div>
+                    <div class="edition-card">
+                        <div class="edition-icon" style="background: linear-gradient(135deg, #ba68c8, #7b1fa2);">
+                            <svg viewBox="0 0 100 100"><path d="M 43.6,0.0 L 0.0,50.9 L 3.6,54.7 L 74.5,54.7 L 76.4,60.4 L 54.5,81.1 L 50.9,69.8 L 41.8,69.8 L 41.8,96.2 L 50.9,98.1 L 90.9,60.4 L 98.2,49.1 L 94.5,45.3 L 21.8,45.3 L 20.0,41.5 L 38.2,22.6 L 41.8,24.5 L 41.8,32.1 L 52.7,30.2 L 50.9,0.0 Z" /></svg>
+                        </div>
+                        <div class="edition-title">Gaming</div>
+                        <div class="edition-date">XX/XX/XXXX</div>
+                    </div>
+                    <div class="edition-card">
+                        <div class="edition-icon" style="background: linear-gradient(135deg, #4dd0e1, #0097a7);">
+                            <svg viewBox="0 0 100 100"><path d="M 43.6,0.0 L 0.0,50.9 L 3.6,54.7 L 74.5,54.7 L 76.4,60.4 L 54.5,81.1 L 50.9,69.8 L 41.8,69.8 L 41.8,96.2 L 50.9,98.1 L 90.9,60.4 L 98.2,49.1 L 94.5,45.3 L 21.8,45.3 L 20.0,41.5 L 38.2,22.6 L 41.8,24.5 L 41.8,32.1 L 52.7,30.2 L 50.9,0.0 Z" /></svg>
+                        </div>
+                        <div class="edition-title">Education</div>
+                        <div class="edition-date">XX/XX/XXXX</div>
+                    </div>
+                    <div class="edition-card">
+                        <div class="edition-icon" style="background: linear-gradient(135deg, #ffb74d, #f57c00);">
+                            <svg viewBox="0 0 100 100"><path d="M 43.6,0.0 L 0.0,50.9 L 3.6,54.7 L 74.5,54.7 L 76.4,60.4 L 54.5,81.1 L 50.9,69.8 L 41.8,69.8 L 41.8,96.2 L 50.9,98.1 L 90.9,60.4 L 98.2,49.1 L 94.5,45.3 L 21.8,45.3 L 20.0,41.5 L 38.2,22.6 L 41.8,24.5 L 41.8,32.1 L 52.7,30.2 L 50.9,0.0 Z" /></svg>
+                        </div>
+                        <div class="edition-title">Enterprise</div>
+                        <div class="edition-date">XX/XX/XXXX</div>
+                    </div>
+                    <div class="edition-card">
+                        <div class="edition-icon" style="background: linear-gradient(135deg, #7986cb, #303f9f);">
+                            <svg viewBox="0 0 100 100"><path d="M 43.6,0.0 L 0.0,50.9 L 3.6,54.7 L 74.5,54.7 L 76.4,60.4 L 54.5,81.1 L 50.9,69.8 L 41.8,69.8 L 41.8,96.2 L 50.9,98.1 L 90.9,60.4 L 98.2,49.1 L 94.5,45.3 L 21.8,45.3 L 20.0,41.5 L 38.2,22.6 L 41.8,24.5 L 41.8,32.1 L 52.7,30.2 L 50.9,0.0 Z" /></svg>
+                        </div>
+                        <div class="edition-title">Business</div>
+                        <div class="edition-date">XX/XX/XXXX</div>
+                    </div>
+                    <div class="edition-card">
+                        <div class="edition-icon" style="background: linear-gradient(135deg, #9e9e9e, #616161);">
+                            <svg viewBox="0 0 100 100"><path d="M 43.6,0.0 L 0.0,50.9 L 3.6,54.7 L 74.5,54.7 L 76.4,60.4 L 54.5,81.1 L 50.9,69.8 L 41.8,69.8 L 41.8,96.2 L 50.9,98.1 L 90.9,60.4 L 98.2,49.1 L 94.5,45.3 L 21.8,45.3 L 20.0,41.5 L 38.2,22.6 L 41.8,24.5 L 41.8,32.1 L 52.7,30.2 L 50.9,0.0 Z" /></svg>
+                        </div>
+                        <div class="edition-title">Basic</div>
+                        <div class="edition-date">XX/XX/XXXX</div>
+                    </div>
+                    <div class="edition-card">
+                        <div class="edition-icon" style="background: linear-gradient(135deg, #f06292, #c2185b);">
+                            <svg viewBox="0 0 100 100"><path d="M 43.6,0.0 L 0.0,50.9 L 3.6,54.7 L 74.5,54.7 L 76.4,60.4 L 54.5,81.1 L 50.9,69.8 L 41.8,69.8 L 41.8,96.2 L 50.9,98.1 L 90.9,60.4 L 98.2,49.1 L 94.5,45.3 L 21.8,45.3 L 20.0,41.5 L 38.2,22.6 L 41.8,24.5 L 41.8,32.1 L 52.7,30.2 L 50.9,0.0 Z" /></svg>
+                        </div>
+                        <div class="edition-title">Lite</div>
+                        <div class="edition-date">XX/XX/XXXX</div>
+                    </div>
+                </div>
+
+                <button class="btn-next" id="btnNextStep3" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 16px; margin-top: auto;">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     Next
                 </button>
-                <button class="btn-next" style="display: flex; align-items: center; gap: 8px; padding: 8px 16px;">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                    How to install?
-                </button>
             </div>
+
+            <div id="step3Content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 30px 40px 40px 40px; box-sizing: border-box; display: none; flex-direction: column; align-items: center; text-align: center; opacity: 0;">
+                <svg viewBox="0 0 100 100" style="width: 32px; height: 32px; fill: #222; margin-bottom: 16px;">
+                    <path d="M 43.6,0.0 L 0.0,50.9 L 3.6,54.7 L 74.5,54.7 L 76.4,60.4 L 54.5,81.1 L 50.9,69.8 L 41.8,69.8 L 41.8,96.2 L 50.9,98.1 L 90.9,60.4 L 98.2,49.1 L 94.5,45.3 L 21.8,45.3 L 20.0,41.5 L 38.2,22.6 L 41.8,24.5 L 41.8,32.1 L 52.7,30.2 L 50.9,0.0 Z" />
+                </svg>
+                <h2 style="margin: 0 0 12px 0; font-size: 20px; color: #111;">Activate arOS</h2>
+                <div style="font-size: 11px; color: #111; line-height: 1.6; margin-bottom: 32px; max-width: 90%;">
+                    <p style="margin: 0 0 12px 0;">You need to enter a valid product key. Your product key should be in the <br> confirmation email you received after purchasing arOS, or inside the packaging <br> that arOS came in.</p>
+                    <p style="margin: 0;">If you select "Skip", arOS will run on a 30-day trial period, after <br> which it will become unusable until you enter a product key to activate it.</p>
+                </div>
+                
+                <div style="position: relative; width: 85%; max-width: 360px; margin-bottom: 32px;">
+                    <input type="text" class="custom-input" placeholder="XXXXX-XXXXX-XXXXX-XXXXX-XXXXX" />
+                    <div class="keyboard-icon">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="8" x2="6.01" y2="8"></line><line x1="10" y1="8" x2="10.01" y2="8"></line><line x1="14" y1="8" x2="14.01" y2="8"></line><line x1="18" y1="8" x2="18.01" y2="8"></line><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 12px; justify-content: center; margin-top: auto;">
+                    <button class="btn-next" id="btnNextStep4" style="display: flex; align-items: center; gap: 8px; padding: 8px 16px;">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        Next
+                    </button>
+                    <button class="btn-next" id="btnSkipStep3" style="display: flex; align-items: center; gap: 8px; padding: 8px 16px;">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 14 20 9 15 4"></polyline><path d="M4 20v-7a4 4 0 0 1 4-4h12"></path></svg>
+                        Skip
+                    </button>
+                </div>
+            </div>
+<div id="step4Content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 30px 40px 40px 40px; box-sizing: border-box; display: none; flex-direction: column; align-items: center; text-align: center; opacity: 0;">
+                <svg viewBox="0 0 28 28" style="width: 70px; height: 70px; fill: #222; margin-bottom: 12px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+                    <path d="M 10 18.5 L 5.5 27 L 9.5 24 L 12 27 L 12 18.5 Z" />
+                    <path d="M 18 18.5 L 22.5 27 L 18.5 24 L 16 27 L 16 18.5 Z" />
+                    <path d="M 12.2 -1.36 L 15.8 -1.36 L 15.72 1.68 L 18.67 2.9 L 20.76 0.7 L 23.3 3.24 L 21.1 5.33 L 22.32 8.28 L 25.36 8.2 L 25.36 11.8 L 22.32 11.72 L 21.1 14.67 L 23.3 16.76 L 20.76 19.3 L 18.67 17.1 L 15.72 18.32 L 15.8 21.36 L 12.2 21.36 L 12.28 18.32 L 9.33 17.1 L 7.24 19.3 L 4.7 16.76 L 6.9 14.67 L 5.68 11.72 L 2.64 11.8 L 2.64 8.2 L 5.68 8.28 L 6.9 5.33 L 4.7 3.24 L 7.24 0.7 L 9.33 2.9 L 12.28 1.68 Z" />
+                    <circle cx="14" cy="10" r="6" fill="#fff"/>
+                    <circle cx="14" cy="10" r="3.5" />
+                </svg>
+                <h2 style="margin: 0 0 10px 0; font-size: 20px; color: #111;">License Agreement</h2>
+                <p style="font-size: 11px; color: #111; margin: 0 0 16px 0;">Please read the arOS 3 License Agreement carefully before continuing the installation.</p>
+                
+                <div class="license-box">
+                    <strong>arOS 3 End User License Agreement (EULA)</strong><br><br>
+                    <strong>IMPORTANT:</strong> PLEASE READ THIS LICENSE AGREEMENT CAREFULLY. BY DOWNLOADING, INSTALLING, OR USING THIS SOFTWARE, YOU AGREE TO ALL THE TERMS AND CONDITIONS OF THIS AGREEMENT. IF YOU DO NOT AGREE TO THESE TERMS, DO NOT INSTALL OR USE THIS SOFTWARE.<br><br>
+                    <strong>1. License Grant</strong><br>
+                    The Licensor hereby grants you a personal, limited, non-exclusive, and non-transferable license to install and use the arOS Operating System ("Software") solely for your personal or internal business purposes, subject to the terms and conditions set forth in this Agreement.<br><br>
+                    <strong>2. Restrictions</strong><br>
+                    You may not reverse engineer, decompile, disassemble, or attempt to derive the source code of the Software. You may not modify, adapt, alter, translate, or create derivative works from the Software. Renting, leasing, sublicensing, or distributing the Software to any third party is strictly prohibited without prior written consent from the Licensor.<br><br>
+                    <strong>3. Intellectual Property Rights</strong><br>
+                    All title, ownership rights, and intellectual property rights in and to the Software, including any updates, enhancements, or modifications, remain exclusively with the Licensor. This license does not grant you any rights to trademarks or service marks associated with arOS.<br><br>
+                    <strong>4. Termination</strong><br>
+                    This Agreement is effective until terminated. The Licensor may terminate this Agreement immediately and without notice if you fail to comply with any of its terms. Upon termination, you must destroy all copies of the Software in your possession.<br><br>
+                    <strong>5. Limitation of Liability</strong><br>
+                    IN NO EVENT SHALL THE LICENSOR BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THE SOFTWARE.
+                </div>
+
+                <div style="display: flex; gap: 12px; justify-content: center; margin-top: auto;">
+                    <button class="btn-next" id="btnDecline" style="display: flex; align-items: center; gap: 8px; padding: 8px 16px;">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                        Decline
+                    </button>
+                    <button class="btn-next" id="btnAccept" style="display: flex; align-items: center; gap: 8px; padding: 8px 16px;">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
+                        Accept
+                    </button>
+                </div>
+            </div>
+
+            <div id="step5Content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 30px 40px 40px 40px; box-sizing: border-box; display: none; flex-direction: column; align-items: center; text-align: center; opacity: 0;">
+                <svg viewBox="0 0 24 24" style="width: 36px; height: 36px; fill: none; stroke: #222; stroke-width: 1.5; margin-bottom: 12px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+                    <rect x="5" y="2" width="14" height="20" rx="3" fill="#e2e2e2" />
+                    <circle cx="12" cy="10" r="4" />
+                    <path d="M12 10 L14.5 12.5" />
+                    <circle cx="9" cy="18" r="1" fill="#222" />
+                </svg>
+                <h2 style="margin: 0 0 10px 0; font-size: 20px; color: #111;">Select Destination</h2>
+                <p style="font-size: 11px; color: #111; margin: 0 0 16px 0;">Select the disk where you want to install arOS. To continue the installation process, click "Next".</p>
+                
+                <div class="disk-selection-box" style="width: 100%; flex-grow: 1; border: 1px solid rgba(138, 74, 227, 0.2); border-radius: 6px; background-color: rgba(255, 255, 255, 0.4); margin-bottom: 20px; padding: 12px; display: flex; box-shadow: inset 0 2px 8px rgba(0,0,0,0.02);">
+                    <div class="disk-card" id="diskCard0">
+                        <div style="width: 32px; height: 40px; background: linear-gradient(180deg, #444, #222); border-radius: 4px; position: relative; margin-bottom: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                            <div style="position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 22px; height: 22px; border-radius: 50%; background: radial-gradient(circle, #777, #333); border: 1px solid #444;"></div>
+                            <div style="position: absolute; bottom: 6px; left: 6px; width: 3px; height: 3px; border-radius: 50%; background: #00d2ff; box-shadow: 0 0 4px #00d2ff;"></div>
+                        </div>
+                        <div class="disk-title">Drive 0</div>
+                        <div class="disk-subtitle">XX GB free of XX TB</div>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 12px; justify-content: center; margin-top: auto;">
+                    <button class="btn-next" id="btnNextStep5" disabled style="display: flex; align-items: center; gap: 8px; padding: 8px 16px;">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        Next
+                    </button>
+                    <button class="btn-next" style="display: flex; align-items: center; gap: 8px; padding: 8px 16px;">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+                        Options
+                    </button>
+                </div>
+            </div>
+
+            <div id="step6Content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 30px 40px 40px 40px; box-sizing: border-box; display: none; flex-direction: column; align-items: center; text-align: center; opacity: 0;">
+                <svg viewBox="0 0 100 100" style="width: 36px; height: 36px; fill: #222; margin-bottom: 12px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+                    <path d="M 43.6,0.0 L 0.0,50.9 L 3.6,54.7 L 74.5,54.7 L 76.4,60.4 L 54.5,81.1 L 50.9,69.8 L 41.8,69.8 L 41.8,96.2 L 50.9,98.1 L 90.9,60.4 L 98.2,49.1 L 94.5,45.3 L 21.8,45.3 L 20.0,41.5 L 38.2,22.6 L 41.8,24.5 L 41.8,32.1 L 52.7,30.2 L 50.9,0.0 Z" />
+                </svg>
+                <h2 style="margin: 0 0 16px 0; font-size: 20px; color: #111;">Are you ready?</h2>
+                
+                <div style="font-size: 11px; color: #111; line-height: 1.8; display: flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
+                    <p style="margin: 0 0 16px 0;">Are you ready to install arOS 3 on your PC?</p>
+                    <p style="margin: 0 0 16px 0;">By clicking "Yes!", please note that your files, apps, and settings will be deleted.<br>It is important to back up all your files before installing arOS 3.</p>
+                    <p style="margin: 0;">During installation, you won't be able to use your PC. Save and close your files<br>before starting.</p>
+                </div>
+
+                <div style="display: flex; gap: 12px; justify-content: center; margin-top: auto;">
+                    <button class="btn-next" id="btnNo" style="display: flex; align-items: center; gap: 8px; padding: 8px 16px;">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        No
+                    </button>
+                    <button class="btn-next" id="btnYes" style="display: flex; align-items: center; gap: 8px; padding: 8px 16px;">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Yes!
+                    </button>
+                </div>
+            </div>
+
+            <div id="step7Content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 30px 40px 40px 40px; box-sizing: border-box; display: none; flex-direction: column; align-items: center; text-align: center; opacity: 0;">
+                <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%;">
+                    <svg viewBox="0 0 100 100" style="width: 36px; height: 36px; fill: #222; margin-bottom: 12px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+                        <path d="M 43.6,0.0 L 0.0,50.9 L 3.6,54.7 L 74.5,54.7 L 76.4,60.4 L 54.5,81.1 L 50.9,69.8 L 41.8,69.8 L 41.8,96.2 L 50.9,98.1 L 90.9,60.4 L 98.2,49.1 L 94.5,45.3 L 21.8,45.3 L 20.0,41.5 L 38.2,22.6 L 41.8,24.5 L 41.8,32.1 L 52.7,30.2 L 50.9,0.0 Z" />
+                    </svg>
+                    <h2 style="margin: 0 0 40px 0; font-size: 20px; color: #111;">Installing arOS 3</h2>
+                    
+                    <div style="position: relative; width: 100%; height: 16px; margin-bottom: 12px;">
+                        <div id="installText1" style="font-size: 10px; color: #111; position: absolute; top: 0; left: 0; width: 100%;">Preparing the disk...</div>
+                        <div id="installText2" style="font-size: 10px; color: #111; position: absolute; top: 0; left: 0; width: 100%; opacity: 0;">Installing arOS, we won't be long, just a moment...</div>
+                        <div id="installText3" style="font-size: 10px; color: #111; position: absolute; top: 0; left: 0; width: 100%; opacity: 0;">Preparing to restart in x minutes...</div>
+                    </div>
+                    
+                    <div class="progress-bar-container" style="position: relative; overflow: hidden; background: rgba(255, 255, 255, 0.35);">
+                        <div id="installProgressBar" class="progress-bar-fill" style="position: absolute; top: 0; left: 0; width: 0%; height: 100%; background: rgba(255,255,255,1); border-radius: 4px;"></div>
+                        <div id="redProgressBar" style="position: absolute; top: 0; left: 0; width: 0%; height: 100%; background: #ff3b3b; border-radius: 4px; opacity: 0;"></div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: auto; display: flex; justify-content: center; align-items: center; width: 100%; height: 40px; position: relative;">
+                    <div id="bottomText1" style="font-size: 9px; color: #333; opacity: 0; position: absolute;">about x minutes and x seconds remaining</div>
+                    <button id="btnRestartNow" class="btn-next" style="opacity: 0; pointer-events: none; display: flex; align-items: center; gap: 8px; padding: 8px 16px; position: absolute;">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.3"/></svg>
+                        Restart Now
+                    </button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+<div id="darknessOverlay" class="darkness-overlay"></div>
+    <div class="oobe-container" id="oobeContainer" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 50; flex-direction: column; align-items: center; justify-content: center; background: #000;">
+        <div class="oobe-text" id="oobeText">
+            <div class="oobe-text-base">Welcome to arOS 3</div>
+            <div class="oobe-text-shine" aria-hidden="true">Welcome to arOS 3</div>
         </div>
     </div>
 
