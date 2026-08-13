@@ -6,7 +6,7 @@
     <title>arOS 3</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="hide-cursor">
 
     <div class="black-overlay" id="blackOverlay"></div>
 
@@ -85,10 +85,14 @@
                 </div>
             </div>
             <div class="window-content">
-                <label>Select language to Install:</label>
-                <select class="custom-select">
-                    <option>English (United States)</option>
-                </select>
+                <label>Select a language to install:</label>
+<div class="custom-dropdown" id="langDropdown" style="margin-bottom: 24px;">
+    <div class="custom-dropdown-selected" id="langSelected">English (United States)</div>
+    <div class="custom-dropdown-options" id="langOptions">
+        <div class="custom-dropdown-option selected">English (United States)</div>
+        <div class="custom-dropdown-option">English (United Kingdom)</div>
+    </div>
+</div>
                 <button class="btn-next">Next</button>
             </div>
         </div>
@@ -120,9 +124,9 @@
                 </div>
                 <h2 class="content-fade-up" style="margin: 0 0 20px 0; font-size: 20px; color: #111;">Welcome to arOS setup!</h2>
                 <div class="content-fade-up" style="font-size: 11px; color: #222; line-height: 1.6;">
-                    <p style="margin: 0 0 12px 0;">Welcome to the arOS setup, which will guide you through the rest of the installation.<br>Each step provides basic instructions for completing the setup process.<br>Click "Next" to continue.</p>
+                    <p style="margin: 0 0 12px 0;">Welcome to the arOS setup. We'll guide you through the installation process.<br>Click "Next" to continue.</p>
                     <p style="margin: 0 0 12px 0;">Setup will take 10 to 30 minutes, depending on the speed of your PC.</p>
-                    <p style="margin: 0;">If you need additional information and instructions about the setup,<br>click "How to install".</p>
+                    <p style="margin: 0;">For additional information and instructions about the setup,<br>click "How to install?".</p>
                 </div>
                 <div class="content-fade-up" style="display: flex; gap: 12px; justify-content: center; margin-top: auto;">
                     <button class="btn-next" id="btnNextStep2" style="display: flex; align-items: center; gap: 8px; padding: 8px 16px;">
@@ -202,7 +206,7 @@
                     </div>
                 </div>
 
-                <button class="btn-next" id="btnNextStep3" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 16px; margin-top: auto;">
+                <button class="btn-next" id="btnNextStep3" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 16px; margin-top: auto;" disabled>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     Next
                 </button>
@@ -214,8 +218,8 @@
                 </svg>
                 <h2 style="margin: 0 0 12px 0; font-size: 20px; color: #111;">Activate arOS</h2>
                 <div style="font-size: 11px; color: #111; line-height: 1.6; margin-bottom: 32px; max-width: 90%;">
-                    <p style="margin: 0 0 12px 0;">You need to enter a valid product key. Your product key should be in the <br> confirmation email you received after purchasing arOS, or inside the packaging <br> that arOS came in.</p>
-                    <p style="margin: 0;">If you select "Skip", arOS will run on a 30-day trial period, after <br> which it will become unusable until you enter a product key to activate it.</p>
+                    <p style="margin: 0 0 12px 0;">You'll need to enter a valid product key. Your product key can be found in the<br>confirmation email you received after purchasing arOS, or inside its packaging.</p>
+                    <p style="margin: 0;">If you skip this step, arOS will run on a 30-day trial. After the trial,<br>you'll need to enter a product key to continue using it.</p>
                 </div>
                 
                 <div style="position: relative; width: 85%; max-width: 360px; margin-bottom: 32px;">
@@ -284,7 +288,7 @@
                 <h2 style="margin: 0 0 10px 0; font-size: 20px; color: #111;">Select Destination</h2>
                 <p style="font-size: 11px; color: #111; margin: 0 0 16px 0;">Select the disk where you want to install arOS. To continue the installation process, click "Next".</p>
                 
-                <div class="disk-selection-box" style="width: 100%; flex-grow: 1; border: 1px solid rgba(138, 74, 227, 0.2); border-radius: 6px; background-color: rgba(255, 255, 255, 0.4); margin-bottom: 20px; padding: 12px; display: flex; box-shadow: inset 0 2px 8px rgba(0,0,0,0.02);">
+                <div class="disk-selection-box">
                     <div class="disk-card" id="diskCard0">
                         <div style="width: 32px; height: 40px; background: linear-gradient(180deg, #444, #222); border-radius: 4px; position: relative; margin-bottom: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
                             <div style="position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 22px; height: 22px; border-radius: 50%; background: radial-gradient(circle, #777, #333); border: 1px solid #444;"></div>
@@ -351,7 +355,7 @@
                 </div>
                 
                 <div style="margin-top: auto; display: flex; justify-content: center; align-items: center; width: 100%; height: 40px; position: relative;">
-                    <div id="bottomText1" style="font-size: 9px; color: #333; opacity: 0; position: absolute;">about x minutes and x seconds remaining</div>
+                    <div id="bottomText1" style="font-size: 9px; color: #333; opacity: 0; position: absolute; top: 30px;">about x minutes and x seconds remaining</div>
                     <button id="btnRestartNow" class="btn-next" style="opacity: 0; pointer-events: none; display: flex; align-items: center; gap: 8px; padding: 8px 16px; position: absolute;">
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.3"/></svg>
                         Restart Now
@@ -368,6 +372,760 @@
         <div class="oobe-text" id="oobeText">
             <div class="oobe-text-base">Welcome to arOS 3</div>
             <div class="oobe-text-shine" aria-hidden="true">Welcome to arOS 3</div>
+        </div>
+    </div>
+
+    <div class="oobe-app-window" id="oobeAppWindow">
+        <div class="oobe-sidebar">
+            <ul style="position: relative;">
+                <div id="sidebarHighlight" class="sidebar-highlight" style="top: 0;"></div>
+                <li class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sidebar-icon"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg> Welcome</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sidebar-icon"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg> Region</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sidebar-icon"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.3"/></svg> Transfer data</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sidebar-icon"><line x1="21" y1="4" x2="14" y2="4"></line><line x1="10" y1="4" x2="3" y2="4"></line><line x1="21" y1="12" x2="12" y2="12"></line><line x1="8" y1="12" x2="3" y2="12"></line><line x1="21" y1="20" x2="16" y2="20"></line><line x1="12" y1="20" x2="3" y2="20"></line><line x1="14" y1="1" x2="14" y2="7"></line><line x1="8" y1="9" x2="8" y2="15"></line><line x1="16" y1="17" x2="16" y2="23"></line></svg> Preferences</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sidebar-icon"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> Account</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sidebar-icon"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg> Wallpaper</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sidebar-icon"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> Sign in to AbdiRPC</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sidebar-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> Location</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sidebar-icon"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> Time Zone</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sidebar-icon"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg> Look</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sidebar-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> Protect arOS</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sidebar-icon"><polyline points="20 6 9 17 4 12"></polyline></svg> Express settings</li>
+            </ul>
+        </div>
+        <div class="oobe-content" style="position: relative; overflow-x: clip; overflow-y: visible;">
+            <div id="oobeStep1Content" class="oobe-step-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; padding: 12px 12px 24px 12px; box-sizing: border-box;">
+                <div class="oobe-banner"></div>
+                <div class="oobe-main-text">
+                    <div class="oobe-title-row">
+                        <svg viewBox="0 0 100 100" class="oobe-title-logo">
+                            <path d="M 43.6,0.0 L 0.0,50.9 L 3.6,54.7 L 74.5,54.7 L 76.4,60.4 L 54.5,81.1 L 50.9,69.8 L 41.8,69.8 L 41.8,96.2 L 50.9,98.1 L 90.9,60.4 L 98.2,49.1 L 94.5,45.3 L 21.8,45.3 L 20.0,41.5 L 38.2,22.6 L 41.8,24.5 L 41.8,32.1 L 52.7,30.2 L 50.9,0.0 Z" fill="#333" />
+                        </svg>
+                        <h1>Welcome!</h1>
+                    </div>
+                    <p>There are a few more steps to complete before arOS is ready to use. We'll<br>guide you through some basic configurations.</p>
+                    <p>Please click Next to continue.</p>
+                </div>
+                <div style="position: absolute; bottom: 24px; right: 24px; display: flex; gap: 8px;">
+                    <button class="oobe-next-btn" id="btnOobeNext1">
+                        Next
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="oobeStep2Content" class="oobe-step-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; flex-direction: column; padding: 30px 40px 24px 40px; box-sizing: border-box; opacity: 0;">
+                <div class="oobe-title-row" style="margin-bottom: 8px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    <h1 style="font-size: 20px; font-weight: 600; margin: 0; color: #111;">Choose your region</h1>
+                </div>
+                <p style="font-size: 11px; color: #111; margin: 0 0 20px 0;">Please select your country or region based on where you live.</p>
+                
+                <div class="country-list-box" style="flex-grow: 1; margin-bottom: 60px;">
+                    <div class="country-item selected">Afghanistan</div>
+                    <div class="country-item">Albania</div>
+                    <div class="country-item">Algeria</div>
+                    <div class="country-item">Andorra</div>
+                    <div class="country-item">Angola</div>
+                    <div class="country-item">Argentina</div>
+                    <div class="country-item">Australia</div>
+                    <div class="country-item">Austria</div>
+                    <div class="country-item">Bahamas</div>
+                    <div class="country-item">Bahrain</div>
+                    <div class="country-item">Bangladesh</div>
+                    <div class="country-item">Barbados</div>
+                    <div class="country-item">Belarus</div>
+                    <div class="country-item">Belgium</div>
+                    <div class="country-item">Belize</div>
+                    <div class="country-item">Benin</div>
+                    <div class="country-item">Bhutan</div>
+                    <div class="country-item">Bolivia</div>
+                    <div class="country-item">Bosnia and Herzegovina</div>
+                    <div class="country-item">Botswana</div>
+                    <div class="country-item">Brazil</div>
+                    <div class="country-item">Brunei</div>
+                    <div class="country-item">Bulgaria</div>
+                    <div class="country-item">Burkina Faso</div>
+                    <div class="country-item">Burundi</div>
+                    <div class="country-item">Cabo Verde</div>
+                    <div class="country-item">Cambodia</div>
+                    <div class="country-item">Cameroon</div>
+                    <div class="country-item">Canada</div>
+                    <div class="country-item">Central African Republic</div>
+                    <div class="country-item">Chad</div>
+                    <div class="country-item">Chile</div>
+                    <div class="country-item">China</div>
+                    <div class="country-item">Colombia</div>
+                    <div class="country-item">Comoros</div>
+                    <div class="country-item">Congo</div>
+                    <div class="country-item">Costa Rica</div>
+                    <div class="country-item">Croatia</div>
+                    <div class="country-item">Cuba</div>
+                    <div class="country-item">Cyprus</div>
+                    <div class="country-item">Czechia</div>
+                    <div class="country-item">Denmark</div>
+                    <div class="country-item">Djibouti</div>
+                    <div class="country-item">Dominica</div>
+                    <div class="country-item">Dominican Republic</div>
+                    <div class="country-item">Ecuador</div>
+                    <div class="country-item">Egypt</div>
+                    <div class="country-item">El Salvador</div>
+                    <div class="country-item">Equatorial Guinea</div>
+                    <div class="country-item">Eritrea</div>
+                    <div class="country-item">Estonia</div>
+                    <div class="country-item">Eswatini</div>
+                    <div class="country-item">Ethiopia</div>
+                    <div class="country-item">Fiji</div>
+                    <div class="country-item">Finland</div>
+                    <div class="country-item">France</div>
+                    <div class="country-item">Gabon</div>
+                    <div class="country-item">Gambia</div>
+                    <div class="country-item">Georgia</div>
+                    <div class="country-item">Germany</div>
+                    <div class="country-item">Ghana</div>
+                    <div class="country-item">Greece</div>
+                    <div class="country-item">Grenada</div>
+                    <div class="country-item">Guatemala</div>
+                    <div class="country-item">Guinea</div>
+                    <div class="country-item">Guinea-Bissau</div>
+                    <div class="country-item">Guyana</div>
+                    <div class="country-item">Haiti</div>
+                    <div class="country-item">Honduras</div>
+                    <div class="country-item">Hungary</div>
+                    <div class="country-item">Iceland</div>
+                    <div class="country-item">India</div>
+                    <div class="country-item">Indonesia</div>
+                    <div class="country-item">Iran</div>
+                    <div class="country-item">Iraq</div>
+                    <div class="country-item">Ireland</div>
+                    <div class="country-item">Israel</div>
+                    <div class="country-item">Italy</div>
+                    <div class="country-item">Ivory Coast</div>
+                    <div class="country-item">Jamaica</div>
+                    <div class="country-item">Japan</div>
+                    <div class="country-item">Jordan</div>
+                    <div class="country-item">Kazakhstan</div>
+                    <div class="country-item">Kenya</div>
+                    <div class="country-item">Kiribati</div>
+                    <div class="country-item">Kuwait</div>
+                    <div class="country-item">Kyrgyzstan</div>
+                    <div class="country-item">Laos</div>
+                    <div class="country-item">Latvia</div>
+                    <div class="country-item">Lebanon</div>
+                    <div class="country-item">Lesotho</div>
+                    <div class="country-item">Liberia</div>
+                    <div class="country-item">Libya</div>
+                    <div class="country-item">Liechtenstein</div>
+                    <div class="country-item">Lithuania</div>
+                    <div class="country-item">Luxembourg</div>
+                    <div class="country-item">Madagascar</div>
+                    <div class="country-item">Malawi</div>
+                    <div class="country-item">Malaysia</div>
+                    <div class="country-item">Maldives</div>
+                    <div class="country-item">Mali</div>
+                    <div class="country-item">Malta</div>
+                    <div class="country-item">Marshall Islands</div>
+                    <div class="country-item">Mauritania</div>
+                    <div class="country-item">Mauritius</div>
+                    <div class="country-item">Mexico</div>
+                    <div class="country-item">Micronesia</div>
+                    <div class="country-item">Moldova</div>
+                    <div class="country-item">Monaco</div>
+                    <div class="country-item">Mongolia</div>
+                    <div class="country-item">Montenegro</div>
+                    <div class="country-item">Morocco</div>
+                    <div class="country-item">Mozambique</div>
+                    <div class="country-item">Myanmar</div>
+                    <div class="country-item">Namibia</div>
+                    <div class="country-item">Nauru</div>
+                    <div class="country-item">Nepal</div>
+                    <div class="country-item">Netherlands</div>
+                    <div class="country-item">New Zealand</div>
+                    <div class="country-item">Nicaragua</div>
+                    <div class="country-item">Niger</div>
+                    <div class="country-item">Nigeria</div>
+                    <div class="country-item">North Korea</div>
+                    <div class="country-item">North Macedonia</div>
+                    <div class="country-item">Norway</div>
+                    <div class="country-item">Oman</div>
+                    <div class="country-item">Pakistan</div>
+                    <div class="country-item">Palau</div>
+                    <div class="country-item">Palestine State</div>
+                    <div class="country-item">Panama</div>
+                    <div class="country-item">Papua New Guinea</div>
+                    <div class="country-item">Paraguay</div>
+                    <div class="country-item">Peru</div>
+                    <div class="country-item">Philippines</div>
+                    <div class="country-item">Poland</div>
+                    <div class="country-item">Portugal</div>
+                    <div class="country-item">Qatar</div>
+                    <div class="country-item">Romania</div>
+                    <div class="country-item">Russia</div>
+                    <div class="country-item">Rwanda</div>
+                    <div class="country-item">Saint Kitts and Nevis</div>
+                    <div class="country-item">Saint Lucia</div>
+                    <div class="country-item">Saint Vincent and the Grenadines</div>
+                    <div class="country-item">Samoa</div>
+                    <div class="country-item">San Marino</div>
+                    <div class="country-item">Sao Tome and Principe</div>
+                    <div class="country-item">Saudi Arabia</div>
+                    <div class="country-item">Senegal</div>
+                    <div class="country-item">Serbia</div>
+                    <div class="country-item">Seychelles</div>
+                    <div class="country-item">Sierra Leone</div>
+                    <div class="country-item">Singapore</div>
+                    <div class="country-item">Slovakia</div>
+                    <div class="country-item">Slovenia</div>
+                    <div class="country-item">Solomon Islands</div>
+                    <div class="country-item">Somalia</div>
+                    <div class="country-item">South Africa</div>
+                    <div class="country-item">South Korea</div>
+                    <div class="country-item">South Sudan</div>
+                    <div class="country-item">Spain</div>
+                    <div class="country-item">Sri Lanka</div>
+                    <div class="country-item">Sudan</div>
+                    <div class="country-item">Suriname</div>
+                    <div class="country-item">Sweden</div>
+                    <div class="country-item">Switzerland</div>
+                    <div class="country-item">Syria</div>
+                    <div class="country-item">Taiwan</div>
+                    <div class="country-item">Tajikistan</div>
+                    <div class="country-item">Tanzania</div>
+                    <div class="country-item">Thailand</div>
+                    <div class="country-item">Timor-Leste</div>
+                    <div class="country-item">Togo</div>
+                    <div class="country-item">Tonga</div>
+                    <div class="country-item">Trinidad and Tobago</div>
+                    <div class="country-item">Tunisia</div>
+                    <div class="country-item">Turkey</div>
+                    <div class="country-item">Turkmenistan</div>
+                    <div class="country-item">Tuvalu</div>
+                    <div class="country-item">Uganda</div>
+                    <div class="country-item">Ukraine</div>
+                    <div class="country-item">United Arab Emirates</div>
+                    <div class="country-item">United Kingdom</div>
+                    <div class="country-item">United States of America</div>
+                    <div class="country-item">Uruguay</div>
+                    <div class="country-item">Uzbekistan</div>
+                    <div class="country-item">Vanuatu</div>
+                    <div class="country-item">Venezuela</div>
+                    <div class="country-item">Vietnam</div>
+                    <div class="country-item">Yemen</div>
+                    <div class="country-item">Zambia</div>
+                    <div class="country-item">Zimbabwe</div>
+                </div>
+
+                <div style="position: absolute; bottom: 24px; right: 24px; display: flex; gap: 8px;">
+                    <button class="oobe-next-btn" id="btnOobeBack2">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        Back
+                    </button>
+                    <button class="oobe-next-btn" id="btnOobeNext2">
+                        Next
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="oobeStep3Content" class="oobe-step-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; flex-direction: column; padding: 30px 40px 24px 40px; box-sizing: border-box; opacity: 0;">
+                <div class="oobe-title-row" style="margin-bottom: 8px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.3"/></svg>
+                    <h1 style="font-size: 20px; font-weight: 600; margin: 0; color: #111;">Let’s transfer your data</h1>
+                </div>
+                <div style="font-size: 11px; color: #111; line-height: 1.6; margin-bottom: 32px;">
+                    <p style="margin: 0 0 8px 0;">You can transfer your data from another arOS device or another operating system.</p>
+                    <p style="margin: 0;">If you do not want to transfer data from a PC, you can use a backup, a<br>startup disk, or set up arOS without transferring any data.</p>
+                </div>
+                <div style="width: 100%; max-width: 400px;">
+                    <label style="font-size: 11px; color: #111; margin-bottom: 10px; font-weight: 500; display: block;">How do you want to transfer your files?</label>
+                    <div class="custom-dropdown" id="transferDropdown">
+                        <div class="custom-dropdown-selected" id="transferSelected">Set up as new PC</div>
+                        <div class="custom-dropdown-options" id="transferOptions">
+                            <div class="custom-dropdown-option selected">Set up as new PC</div>
+                            <div class="custom-dropdown-option">Transfer from Mac or PC</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="position: absolute; bottom: 24px; right: 24px; display: flex; gap: 8px;">
+                    <button class="oobe-next-btn" id="btnOobeBack3">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        Back
+                    </button>
+                    <button class="oobe-next-btn" id="btnOobeNext3">
+                        Next
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="oobeStep4Content" class="oobe-step-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; flex-direction: column; padding: 30px 40px 24px 40px; box-sizing: border-box; opacity: 0;">
+                <div class="oobe-title-row" style="margin-bottom: 8px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><line x1="21" y1="4" x2="14" y2="4"></line><line x1="10" y1="4" x2="3" y2="4"></line><line x1="21" y1="12" x2="12" y2="12"></line><line x1="8" y1="12" x2="3" y2="12"></line><line x1="21" y1="20" x2="16" y2="20"></line><line x1="12" y1="20" x2="3" y2="20"></line><line x1="14" y1="1" x2="14" y2="7"></line><line x1="8" y1="9" x2="8" y2="15"></line><line x1="16" y1="17" x2="16" y2="23"></line></svg>
+                    <h1 style="font-size: 20px; font-weight: 600; margin: 0; color: #111;">Preferences</h1>
+                </div>
+                <div style="font-size: 11px; color: #111; line-height: 1.6; margin-bottom: 24px;">
+                    <p style="margin: 0 0 8px 0;">The following preferences are commonly used in your region.</p>
+                    <p style="margin: 0;">You can set up arOS to use these settings, or customize them later in<br>the Settings app.</p>
+                </div>
+                
+                <div style="width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 12px;">
+                    <div style="position: relative; width: 100%;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px; position: absolute; left: 14px; top: 50%; transform: translateY(-50%); pointer-events: none; z-index: 2;"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path d="M9 14l1.5-4 1.5 4"/><path d="M9.5 12.5h2"/></svg>
+                        <div class="custom-dropdown has-icon" id="prefLangDropdown">
+                            <div class="custom-dropdown-selected" id="prefLangSelected">English (US)</div>
+                            <div class="custom-dropdown-options" id="prefLangOptions">
+                                <div class="custom-dropdown-option selected">English (US)</div>
+                                <div class="custom-dropdown-option">English (UK)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="position: relative; width: 100%;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px; position: absolute; left: 14px; top: 50%; transform: translateY(-50%); pointer-events: none; z-index: 2;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        <div class="custom-dropdown has-icon" id="prefRegionDropdown">
+                            <div class="custom-dropdown-selected" id="prefRegionSelected">English (US)</div>
+                            <div class="custom-dropdown-options" id="prefRegionOptions">
+                                <div class="custom-dropdown-option selected">English (US)</div>
+                                <div class="custom-dropdown-option">English (UK)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="position: relative; width: 100%;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px; position: absolute; left: 14px; top: 50%; transform: translateY(-50%); pointer-events: none; z-index: 2;"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="8" x2="6.01" y2="8"></line><line x1="10" y1="8" x2="10.01" y2="8"></line><line x1="14" y1="8" x2="14.01" y2="8"></line><line x1="18" y1="8" x2="18.01" y2="8"></line><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+                        <div class="custom-dropdown has-icon" id="prefKeyboardDropdown">
+                            <div class="custom-dropdown-selected" id="prefKeyboardSelected">US</div>
+                            <div class="custom-dropdown-options" id="prefKeyboardOptions">
+                                <div class="custom-dropdown-option selected">US</div>
+                                <div class="custom-dropdown-option">UK</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="position: absolute; bottom: 24px; right: 24px; display: flex; gap: 8px;">
+                    <button class="oobe-next-btn" id="btnOobeBack4">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        Back
+                    </button>
+                    <button class="oobe-next-btn" id="btnOobeNext4">
+                        Next
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="oobeStep5Content" class="oobe-step-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; flex-direction: column; padding: 30px 40px 24px 40px; box-sizing: border-box; opacity: 0;">
+                <div class="oobe-title-row" style="margin-bottom: 8px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    <h1 style="font-size: 20px; font-weight: 600; margin: 0; color: #111;">Create an account</h1>
+                </div>
+                <div style="font-size: 11px; color: #111; line-height: 1.6; margin-bottom: 32px;">
+                    <p style="margin: 0 0 16px 0;">Your username and picture represent your user account. The account<br>you create here is an administrator account.</p>
+                    <p style="margin: 0;">You can create multiple accounts on your PC later in Settings.</p>
+                </div>
+                
+                <div style="display: flex; gap: 12px; margin-bottom: 32px;">
+                    <div class="avatar-item selected" style="background: linear-gradient(135deg, #311B92, #5E35B1);">
+                        <svg viewBox="0 0 100 100" style="width: 24px; height: 24px; fill: #fff;">
+                            <path d="M 43.6,0.0 L 0.0,50.9 L 3.6,54.7 L 74.5,54.7 L 76.4,60.4 L 54.5,81.1 L 50.9,69.8 L 41.8,69.8 L 41.8,96.2 L 50.9,98.1 L 90.9,60.4 L 98.2,49.1 L 94.5,45.3 L 21.8,45.3 L 20.0,41.5 L 38.2,22.6 L 41.8,24.5 L 41.8,32.1 L 52.7,30.2 L 50.9,0.0 Z" />
+                        </svg>
+                    </div>
+                    <div class="avatar-item" style="background-image: url('Assets/AccountImage1.png'); background-size: cover; background-position: center;"></div>
+                    <div class="avatar-item" style="background-image: url('Assets/AccountImage2.png'); background-size: cover; background-position: center;"></div>
+                    <div class="avatar-item" style="background-image: url('Assets/AccountImage3.png'); background-size: cover; background-position: center;"></div>
+                    <div class="avatar-item" style="background-image: url('Assets/AccountImage4.png'); background-size: cover; background-position: center;"></div>
+                    <div class="avatar-item avatar-add">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </div>
+                </div>
+
+                <div style="position: relative; width: 100%; max-width: 400px;">
+                    <input type="text" class="custom-input" id="accountNameInput" placeholder="Account name" />
+                    <div class="keyboard-icon">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="8" x2="6.01" y2="8"></line><line x1="10" y1="8" x2="10.01" y2="8"></line><line x1="14" y1="8" x2="14.01" y2="8"></line><line x1="18" y1="8" x2="18.01" y2="8"></line><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+                    </div>
+                </div>
+
+                <div style="position: absolute; bottom: 24px; right: 24px; display: flex; gap: 8px;">
+                    <button class="oobe-next-btn" id="btnOobeBack5">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        Back
+                    </button>
+                    <button class="oobe-next-btn" id="btnOobeNext5" disabled>
+                        Next
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="oobeStep6Content" class="oobe-step-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; flex-direction: column; padding: 30px 40px 24px 40px; box-sizing: border-box; opacity: 0;">
+                <div class="oobe-title-row" style="margin-bottom: 8px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                    <h1 style="font-size: 20px; font-weight: 600; margin: 0; color: #111;">Wallpaper</h1>
+                </div>
+                <div style="font-size: 11px; color: #111; line-height: 1.6; margin-bottom: 24px;">
+                    <p style="margin: 0 0 16px 0;">Type a PC name and select a desktop wallpaper. You can change the<br>wallpaper later in Settings.</p>
+                </div>
+                
+                <div style="width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px;">
+                    <label style="font-size: 11px; color: #111; font-weight: 500;">Desktop wallpaper</label>
+                    <div style="display: flex; gap: 10px;">
+                        <div class="wallpaper-item selected" style="background-image: url('Assets/BG.png'); background-size: cover; background-position: center;"></div>
+                        <div class="wallpaper-item" style="background-image: url('Assets/BG1.png'); background-size: cover; background-position: center;"></div>
+                        <div class="wallpaper-item" style="background-image: url('Assets/BG2.png'); background-size: cover; background-position: center;"></div>
+                        <div class="wallpaper-item" style="background-image: url('Assets/BG3.png'); background-size: cover; background-position: center;"></div>
+                        <div class="wallpaper-item wallpaper-add">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="position: relative; width: 100%; max-width: 400px; margin-bottom: 12px;">
+                    <input type="text" class="custom-input" id="pcNameInput" placeholder="PC name" maxlength="15" />
+                    <div class="keyboard-icon">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="8" x2="6.01" y2="8"></line><line x1="10" y1="8" x2="10.01" y2="8"></line><line x1="14" y1="8" x2="14.01" y2="8"></line><line x1="18" y1="8" x2="18.01" y2="8"></line><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="10" y1="12" x2="10.01" y2="12"></line><line x1="14" y1="12" x2="14.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+                    </div>
+                </div>
+                
+                <div style="font-size: 10px; color: #333; line-height: 1.6;">
+                    <p style="margin: 0;">Cannot contain only numbers</p>
+                    <p style="margin: 0;">Cannot exceed 15 characters</p>
+                    <p style="margin: 0;">No spaces or any of the following special characters:<br>"/\\[]:|&lt;&gt;+=;,?</p>
+                </div>
+
+                <div style="position: absolute; bottom: 24px; right: 24px; display: flex; gap: 8px;">
+                    <button class="oobe-next-btn" id="btnOobeBack6">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        Back
+                    </button>
+                    <button class="oobe-next-btn" id="btnOobeNext6" disabled>
+                        Next
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="oobeStep7Content" class="oobe-step-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; flex-direction: column; padding: 12px 40px 24px 40px; box-sizing: border-box; opacity: 0;">
+                <div class="oobe-banner" style="height: 120px; margin-bottom: 16px; background-image: url('Assets/BG.png');"></div>
+                <div class="oobe-title-row" style="margin-bottom: 8px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                    <h1 style="font-size: 20px; font-weight: 600; margin: 0; color: #111;">Sign in to AbdiRPC</h1>
+                </div>
+                <div style="font-size: 11px; color: #111; line-height: 1.6; margin-bottom: 24px; max-width: 90%;">
+                    <p style="margin: 0;">Sign in with your AbdiRPC account to use Cloudbay and AR Store, and to<br>create the experience you want. Customize preferences, sync content<br>and security settings across devices, and discover products and<br>services relevant to you.</p>
+                </div>
+
+                <div style="position: relative; width: 100%; max-width: 320px; margin-bottom: 16px;">
+                    <input type="text" class="custom-input" id="abdiRpcInput" placeholder="Email or phone number" />
+                    <div class="keyboard-icon">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2" ry="2"></rect><circle cx="9" cy="10" r="3"></circle><path d="M5 18a4 4 0 0 1 8 0"></path><line x1="15" y1="10" x2="19" y2="10"></line><line x1="15" y1="14" x2="19" y2="14"></line></svg>
+                    </div>
+                </div>
+
+                <div style="font-size: 10px; color: #111; display: flex; flex-direction: column; gap: 8px;">
+                    <span style="cursor: pointer; font-weight: 500;">No account? Create now!</span>
+                    <span style="cursor: pointer; font-weight: 500;">Sign in with a security key</span>
+                </div>
+
+                <div style="position: absolute; bottom: 24px; right: 24px; display: flex; gap: 8px;">
+                    <button class="oobe-next-btn" id="btnOobeBack7">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        Back
+                    </button>
+                    <button class="oobe-next-btn" id="btnOobeSkip7">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19"></line></svg>
+                        Skip
+                    </button>
+                    <button class="oobe-next-btn" id="btnOobeNext7" disabled>
+                        Next
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="oobeStep8Content" class="oobe-step-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; flex-direction: column; padding: 30px 40px 24px 40px; box-sizing: border-box; opacity: 0;">
+                <div class="oobe-title-row" style="margin-bottom: 8px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <h1 style="font-size: 20px; font-weight: 600; margin: 0; color: #111;">Location</h1>
+                </div>
+                <div style="font-size: 11px; color: #111; line-height: 1.6; margin-bottom: 24px; max-width: 90%;">
+                    <p style="margin: 0;">Location Services allows apps like AR Maps and other services to<br>gather and use data including your approximate location.</p>
+                </div>
+
+                <div class="custom-radio-container" id="locationRadioBtn" style="margin-top: 50px;">
+                    <div class="custom-radio"></div>
+                    <span style="font-size: 11px; color: #111; font-weight: 500;">Enable Location Services on arOS</span>
+                </div>
+
+                <div style="margin-top: auto; margin-bottom: 60px; display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                    <svg viewBox="0 0 24 24" fill="#007aff" stroke="none" style="width: 14px; height: 14px;"><circle cx="12" cy="12" r="12"></circle><path d="M12 17v-5" stroke="#fff" stroke-width="2.5" stroke-linecap="round"></path><circle cx="12" cy="7.5" r="1.5" fill="#fff"></circle></svg>
+                    <span style="font-size: 10px; color: #007aff; font-weight: 500;">About Location Services & Privacy...</span>
+                </div>
+
+                <div style="position: absolute; bottom: 24px; right: 24px; display: flex; gap: 8px;">
+                    <button class="oobe-next-btn" id="btnOobeBack8">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        Back
+                    </button>
+                    <button class="oobe-next-btn" id="btnOobeNext8">
+                        Next
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="oobeStep9Content" class="oobe-step-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; flex-direction: column; padding: 30px 40px 24px 40px; box-sizing: border-box; opacity: 0;">
+                <div class="oobe-title-row" style="margin-bottom: 8px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <h1 style="font-size: 20px; font-weight: 600; margin: 0; color: #111;">Time Zone</h1>
+                </div>
+                <div style="font-size: 11px; color: #111; line-height: 1.6; margin-bottom: 16px; max-width: 90%;">
+                    <p style="margin: 0;">To select a time zone, click the map near your location. You can also<br>have the time zone update automatically.</p>
+                </div>
+
+                <div class="custom-radio-container" id="autoTimeRadioBtn" style="margin-bottom: 4px;">
+                    <div class="custom-radio"></div>
+                    <span style="font-size: 11px; color: #111; font-weight: 500;">Set time zone automatically using current location</span>
+                </div>
+
+                <div class="map-container" id="timeZoneMap">
+                    <div class="map-dot" id="mapDot"></div>
+                </div>
+
+                <div style="width: 100%; max-width: 300px;">
+                    <label style="font-size: 11px; color: #111; margin-bottom: 8px; font-weight: 500; display: block;">Time Zone:</label>
+                    <div class="custom-dropdown" id="timeZoneDropdown">
+                        <div class="custom-dropdown-selected" id="timeZoneSelected">Select Time Zone</div>
+                        <div class="custom-dropdown-options" id="timeZoneOptions">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <div style="position: absolute; bottom: 24px; right: 24px; display: flex; gap: 8px;">
+                    <button class="oobe-next-btn" id="btnOobeBack9">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        Back
+                    </button>
+                    <button class="oobe-next-btn" id="btnOobeNext9">
+                        Next
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="oobeStep10Content" class="oobe-step-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; flex-direction: column; padding: 30px 40px 24px 40px; box-sizing: border-box; opacity: 0;">
+                <div class="oobe-title-row" style="margin-bottom: 8px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    <h1 style="font-size: 20px; font-weight: 600; margin: 0; color: #111;">Look</h1>
+                </div>
+                <div style="font-size: 11px; color: #111; line-height: 1.6; margin-bottom: 40px; max-width: 90%;">
+                    <p style="margin: 0;">Select an appearance and see how the dock, menus, buttons, and<br>windows adjust depending on which one you choose. You can change<br>this later in Settings.</p>
+                </div>
+
+                <div style="display: flex; gap: 16px; justify-content: center; margin-top: 20px;">
+                    <div class="look-item selected" id="lookLight">
+                        <div class="look-card-inner" style="background-image: url('Assets/BG.png');">
+                            <div class="mock-menubar"></div>
+                            <div class="mock-dock"></div>
+                        </div>
+                        <span class="look-item-text">Light</span>
+                    </div>
+                    <div class="look-item" id="lookDark">
+                        <div class="look-card-inner" style="background-image: url('Assets/BGDark.png');">
+                            <div class="mock-menubar" style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05);"></div>
+                            <div class="mock-dock" style="background: rgba(0,0,0,0.4);"></div>
+                        </div>
+                        <span class="look-item-text">Dark</span>
+                    </div>
+                    <div class="look-item" id="lookAuto">
+                        <div class="look-card-inner" style="background-image: url('Assets/BG.png'), url('Assets/BGDark.png'); background-position: left center, right center; background-size: 50% 100%, 50% 100%; background-repeat: no-repeat, no-repeat;">
+                            <div class="mock-menubar"></div>
+                            <div class="mock-dock"></div>
+                        </div>
+                        <span class="look-item-text">Automatic</span>
+                    </div>
+                </div>
+
+                <div style="position: absolute; bottom: 24px; right: 24px; display: flex; gap: 8px;">
+                    <button class="oobe-next-btn" id="btnOobeBack10">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        Back
+                    </button>
+                    <button class="oobe-next-btn" id="btnOobeNext10">
+                        Next
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="oobeStep11Content" class="oobe-step-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; flex-direction: column; padding: 30px 40px 24px 40px; box-sizing: border-box; opacity: 0;">
+                <div class="oobe-title-row" style="margin-bottom: 8px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    <h1 style="font-size: 20px; font-weight: 600; margin: 0; color: #111;">Protect arOS Automatically</h1>
+                </div>
+                <div style="font-size: 11px; color: #111; line-height: 1.6; margin-bottom: 24px; max-width: 95%;">
+                    <p style="margin: 0;">Let's protect arOS automatically to prevent malicious attacks on your PC.<br>When you use recommended settings or install updates only, some diagnostic<br>information is sent to AbdiRPC. This information is not used to identify or<br>contact you.</p>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 380px; margin-left: 0;">
+                    <div class="protect-card">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
+                        <div class="protect-text">
+                            <strong>Use recommended settings</strong>
+                            <span>Install important and recommended updates for arOS, make web browsing safer, and check online for solutions to bugs or lag.</span>
+                        </div>
+                    </div>
+                    <div class="protect-card">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
+                        <div class="protect-text">
+                            <strong>Install important updates only</strong>
+                            <span>Just install security updates and important updates for arOS.</span>
+                        </div>
+                    </div>
+                    <div class="protect-card">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
+                        <div class="protect-text">
+                            <strong>Nah, I don't want that</strong>
+                            <span>Not recommended. Without important updates, your PC may be at risk and vulnerable to viruses or trojans.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="position: absolute; bottom: 32px; left: 40px;">
+                    <span style="font-size: 11px; color: #444; font-weight: 500; cursor: pointer;">Learn more about each option</span>
+                </div>
+
+                <div style="position: absolute; bottom: 24px; right: 24px; display: flex; gap: 8px;">
+                    <button class="oobe-next-btn" id="btnOobeBack11">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        Back
+                    </button>
+                    <button class="oobe-next-btn" id="btnOobeNext11" disabled>
+                        Next
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="oobeStep12Content" class="oobe-step-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; flex-direction: column; padding: 30px 40px 24px 40px; box-sizing: border-box; opacity: 0;">
+                <div class="oobe-title-row" style="margin-bottom: 8px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    <h1 style="font-size: 20px; font-weight: 600; margin: 0; color: #111;">Express settings</h1>
+                </div>
+                <div style="font-size: 11px; color: #111; line-height: 1.6; margin-bottom: 24px; max-width: 95%;">
+                    <p style="margin: 0;">We recommend these settings, which include occasionally sending<br>info to AbdiRPC. You can customize these settings now or later.</p>
+                </div>
+
+                <ul style="margin: 0 0 0 0; padding: 0 0 0 16px; font-size: 10px; color: #333; line-height: 1.8; list-style-type: disc;">
+                    <li>Cloudbay is your default cloud storage.</li>
+                    <li>Automatically connect to Wi-Fi networks.</li>
+                    <li>Use Webwide as your default browser.</li>
+                    <li>Turn on 'Do Not Track' in Webwide.</li>
+                    <li>Help improve AbdiRPC software, services, and location<br>services by sending us diagnostic information.</li>
+                    <li>Check online for solutions to problems.</li>
+                    <li>Let apps give you personalized content based on your PC's<br>location, name, and other data.</li>
+                    <li>Turn on sharing and connect to devices on this network.</li>
+                </ul>
+
+                <div style="margin-top: auto; margin-bottom: 110px; margin-left: 0;">
+                    <span style="font-size: 10px; color: #444; font-weight: 500; cursor: pointer;">Privacy statement</span>
+                </div>
+
+                <div style="position: absolute; bottom: 24px; right: 24px; display: flex; gap: 8px;">
+                    <button class="oobe-next-btn" id="btnOobeBack12">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        Back
+                    </button>
+                    <button class="oobe-next-btn" id="btnOobeCustomize12">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+                        Customize them
+                    </button>
+                    <button class="oobe-next-btn" id="btnOobeNext12">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        Use Express settings
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="oobeStep13Content" class="oobe-step-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; flex-direction: column; align-items: center; padding: 40px; box-sizing: border-box; opacity: 0; z-index: 10; background: transparent;">
+            <div style="flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center;">
+                <h1 style="font-size: 20px; font-weight: 600; margin: 0 0 16px 0; color: #111;">Enough?</h1>
+                <div style="font-size: 10px; color: #333; line-height: 1.8; max-width: 420px;">
+                    <p style="margin: 0 0 16px 0;">If you are not sure about this setup, click "No" to go back to the first step of the arOS setup.</p>
+                    <p style="margin: 0;">If you click "Yes", your customizations will be saved. You can always change them later in Settings.</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 12px; justify-content: center; margin-top: auto;">
+                <button class="oobe-next-btn" id="btnOobeNo13" style="display: flex; align-items: center; gap: 8px; padding: 8px 16px; min-width: 80px; justify-content: center;">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    No
+                </button>
+                <button class="oobe-next-btn" id="btnOobeYes13" style="display: flex; align-items: center; gap: 8px; padding: 8px 16px; min-width: 80px; justify-content: center;">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Yes
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="final-app-window" id="finalAppWindow">
+        <div id="finalAppContent" class="final-app-content">
+            <div class="final-app-image" style="background-image: url('Assets/BG.png');"></div>
+            <div class="final-app-text">
+                <h2>Thank you!</h2>
+                <p>Thank you for going through this adventure. Your PC is ready for use now!<br>Click "Let's start!" to finish this setup.</p>
+                <button id="btnLetsStart" class="btn-next" style="display: flex; align-items: center; gap: 8px; padding: 8px 16px; margin: 0 auto;">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    Let's start!
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="finalLoadingContainer" class="final-loading-container" style="display: none;">
+        <div id="finalSpinnerGroup" style="display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; position: absolute; bottom: 20%;">
+            <div class="loader" style="margin-bottom: 24px; width: 28px; height: 28px;"></div>
+            <div style="position: relative; height: 20px; width: 200px; display: flex; justify-content: center;">
+                <div id="finalText1" class="final-loading-text">Finishing setup...</div>
+                <div id="finalText2" class="final-loading-text" style="opacity: 0;">Organizing desktop...</div>
+                <div id="finalText3" class="final-loading-text" style="opacity: 0;">We're almost ready...</div>
+            </div>
+        </div>
+        <div id="finalText4" class="final-welcome-text" style="opacity: 0;">Welcome to arOS</div>
+        <div id="finalDoNotTurnOff" class="final-bottom-text" style="opacity: 0;">Do not turn off your PC at this time.</div>
+    </div>
+    </div>
+
+    <div class="desktop-container" id="desktopContainer" style="display: none; opacity: 0;">
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <div class="top-bar-icon"><svg viewBox="0 0 100 100"><path d="M 43.6,0.0 L 0.0,50.9 L 3.6,54.7 L 74.5,54.7 L 76.4,60.4 L 54.5,81.1 L 50.9,69.8 L 41.8,69.8 L 41.8,96.2 L 50.9,98.1 L 90.9,60.4 L 98.2,49.1 L 94.5,45.3 L 21.8,45.3 L 20.0,41.5 L 38.2,22.6 L 41.8,24.5 L 41.8,32.1 L 52.7,30.2 L 50.9,0.0 Z" fill="#854ae2"/></svg></div>
+            </div>
+            <div class="top-bar-center">
+                <div class="top-bar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2L2 22h20L12 2z"/></svg></div>
+                <span class="search-text">What do you want to do?</span>
+                <div class="search-icons">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </div>
+            </div>
+            <div class="top-bar-right">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="2" ry="2"></rect><line x1="22" y1="11" x2="22" y2="13"></line></svg>
+                <span class="date-text">Fri 14  12:26</span>
+                <div class="top-bar-icon user-icon"><svg viewBox="0 0 100 100"><path d="M 43.6,0.0 L 0.0,50.9 L 3.6,54.7 L 74.5,54.7 L 76.4,60.4 L 54.5,81.1 L 50.9,69.8 L 41.8,69.8 L 41.8,96.2 L 50.9,98.1 L 90.9,60.4 L 98.2,49.1 L 94.5,45.3 L 21.8,45.3 L 20.0,41.5 L 38.2,22.6 L 41.8,24.5 L 41.8,32.1 L 52.7,30.2 L 50.9,0.0 Z" fill="#fff"/></svg></div>
+            </div>
+        </div>
+        
+        <div class="bottom-dock">
+            <div class="dock-icon dock-icon-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div>
+            <div class="dock-icon dock-icon-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg></div>
+            <div class="dock-icon dock-icon-3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
+            <div class="dock-icon dock-icon-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div>
+            <div class="dock-icon dock-icon-5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></div>
         </div>
     </div>
 
